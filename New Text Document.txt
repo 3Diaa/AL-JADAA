@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجدع | قطع غيار بضمان حقيقي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        .hero-pattern { background-color: #1e3a8a; background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/circuit-board.png"); }
+        .product-card:hover { transform: translateY(-5px); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-900 text-yellow-400 p-2 rounded-lg font-black text-2xl">الجدع</div>
+                <span class="hidden md:block font-bold text-blue-900 italic">... في الضهر دايماً</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="#products" class="bg-blue-900 text-white px-5 py-2 rounded-md font-bold hover:bg-blue-800">تصفح المنتجات</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-pattern text-white py-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">شاشاتك وبطارياتك عندنا.. <br><span class="text-yellow-400">والضمان بيبدأ بعد التركيب!</span></h1>
+            <p class="text-xl text-blue-100 mb-10">أول براند في مصر يقبل مرتجع الشاشات حتى بعد اللزق والتركيب. اشتري بقلب جامد.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold">
+                <div class="bg-white/10 p-3 rounded-lg border border-white/20">ضمان حقيقي ✅</div>
+                <div class="bg-white/10 p-3 rounded-lg border border-white/20">أسعار تجار 💰</div>
+                <div class="bg-white/10 p-3 rounded-lg border border-white/20">شحن محافظات 🚛</div>
+                <div class="bg-white/10 p-3 rounded-lg border border-white/20">دعم 24 ساعة 📞</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-yellow-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-black text-blue-900 mb-4 italic">ليه "الجدع"؟</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-8 text-gray-700 font-bold">لأننا فنيين وعارفين إن "الريسك" عالي. إحنا بنشيل عنك المخاطرة عشان تركز في شغلك وبس.</p>
+        </div>
+    </section>
+
+    <section id="products" class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-black mb-10 text-right border-r-8 border-blue-900 pr-4">أهم قطع الغيار المتوفرة</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100">
+                <div class="bg-gray-100 h-40 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">صورة الشاشة</div>
+                <h3 class="font-black text-lg mb-1">شاشة iPhone 12 Pro Max</h3>
+                <p class="text-blue-600 font-bold mb-4">جودة أوريجينال سحب</p>
+                <button onclick="orderViaWhatsApp('شاشة iPhone 12 Pro Max')" class="w-full bg-green-600 text-white font-black py-3 rounded-xl hover:bg-green-700 transition flex justify-center gap-2">
+                    اطلب واتساب 📱
+                </button>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100">
+                <div class="bg-gray-100 h-40 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">صورة الشاشة</div>
+                <h3 class="font-black text-lg mb-1">شاشة Samsung A52</h3>
+                <p class="text-blue-600 font-bold mb-4">Original AMOLED</p>
+                <button onclick="orderViaWhatsApp('شاشة Samsung A52')" class="w-full bg-green-600 text-white font-black py-3 rounded-xl hover:bg-green-700 transition flex justify-center gap-2">
+                    اطلب واتساب 📱
+                </button>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100">
+                <div class="bg-gray-100 h-40 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">صورة البطارية</div>
+                <h3 class="font-black text-lg mb-1">بطارية iPhone 11</h3>
+                <p class="text-blue-600 font-bold mb-4">سعة حقيقية 100%</p>
+                <button onclick="orderViaWhatsApp('بطارية iPhone 11')" class="w-full bg-green-600 text-white font-black py-3 rounded-xl hover:bg-green-700 transition flex justify-center gap-2">
+                    اطلب واتساب 📱
+                </button>
+            </div>
+            
+            </div>
+    </section>
+
+    <section class="bg-blue-900 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-black mb-6">إحنا مش بس بنبيع.. إحنا بنضمن!</h2>
+            <div class="max-w-xl mx-auto bg-white/10 p-8 rounded-3xl border border-white/20">
+                <h3 class="text-xl font-bold mb-4">بكرة بضاعتك عندك!</h3>
+                <p class="mb-6 text-blue-100 italic font-bold">"أيوة، لو طلبت قبل الساعة 4 العصر، الشحنة بتتحرك في نفس اليوم لأي مكان في مصر."</p>
+                <a href="https://wa.me/201234567890" class="inline-block bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-black text-lg shadow-xl">اتصل بـ "الجدع" الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-8 border-t">
+        <div class="container mx-auto px-4 text-center">
+            <p class="font-black text-blue-900 text-xl">الجدع - El Gada3</p>
+            <p class="text-gray-500 text-sm mt-2">جميع الحقوق محفوظة © 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        function orderViaWhatsApp(productName) {
+            const phoneNumber = "201234567890"; // ضع رقم واتساب الخاص بك هنا
+            const message = `يا جدع، عايز أستفسر عن سعر وطلب: ${productName}. أنا فني صيانة وبكلمك من الموقع.`;
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

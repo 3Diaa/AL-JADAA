@@ -99,12 +99,18 @@
     </footer>
 
     <script>
-        function orderViaWhatsApp(productName) {
-            const phoneNumber = "201234567890"; // ضع رقم واتساب الخاص بك هنا
-            const message = `يا جدع، عايز أستفسر عن سعر وطلب: ${productName}. أنا فني صيانة وبكلمك من الموقع.`;
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
+     function orderViaWhatsApp(productName) {
+    // ضع رقمك هنا (مثال: 201066666666)
+    const phoneNumber = "01027120205"; 
+    
+    const message = `يا جدع، عايز أستفسر عن سعر وطلب: ${productName}. أنا فني صيانة وبكلمك من الموقع.`;
+    
+    // الرابط ده بيفتح الواتساب مباشرة سواء تطبيق أو ويب
+    const url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+    
+    // التعديل ده بيخلي المتصفح ميعتبرش الرابط "سبام"
+    window.location.href = url;
+}
     </script>
 </body>
 </html>

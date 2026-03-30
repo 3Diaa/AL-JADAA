@@ -7,137 +7,126 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
-        .hero-pattern { background-color: #1e3a8a; background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/circuit-board.png"); }
-        .product-card:hover { transform: translateY(-5px); transition: 0.3s; }
-        .cart-badge { position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; }
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
+        .hero-section { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); position: relative; overflow: hidden; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 24px; }
+        .product-card:hover { transform: translateY(-10px); shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        .cart-count { position: absolute; top: -5px; right: -5px; background: #f59e0b; color: #1e3a8a; font-weight: 900; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+        .btn-grad { background-image: linear-gradient(to right, #1e3a8a 0%, #3b82f6  51%, #1e3a8a  100%); transition: 0.5s; background-size: 200% auto; }
+        .btn-grad:hover { background-position: right center; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-gray-900">
 
-    <div class="bg-yellow-400 py-1 text-center font-bold text-blue-900 text-sm">
-        للتواصل السريع والطلبات: <a href="tel:01027120205" class="underline">01027120205</a> 📞
-    </div>
-
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="bg-blue-900 text-yellow-400 p-2 rounded-lg font-black text-2xl uppercase italic">AL JADAA</div>
-                <span class="hidden md:block font-bold text-blue-900 italic">... في الضهر دايماً</span>
-            </div>
-            
-            <div class="relative cursor-pointer" onclick="toggleCart()">
-                <div class="bg-blue-100 p-2 rounded-full">
-                    🛒 <span id="cart-count" class="cart-badge">0</span>
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="relative cursor-pointer group" onclick="toggleCart()">
+                <div class="bg-blue-50 p-3 rounded-2xl group-hover:bg-blue-100 transition">
+                    🛒 <span id="cart-count" class="cart-count shadow-lg">0</span>
                 </div>
             </div>
+            <div class="text-3xl font-black text-blue-900 tracking-tighter uppercase italic">AL JADAA</div>
         </div>
     </header>
 
-    <section class="hero-pattern text-white py-16 px-4 text-center">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">شاشاتك وبطارياتك عندنا.. <br><span class="text-yellow-400 uppercase">AL JADAA</span></h1>
-            <p class="text-xl text-blue-100 mb-8 font-bold">ركّب ولزّق ولو فيها الهوا رجّعها.. الضمان الحقيقي للفنيين</p>
-        </div>
-    </section>
-
-    <section id="products" class="py-12 container mx-auto px-4">
-        <h2 class="text-3xl font-black mb-10 text-right border-r-8 border-blue-900 pr-4">كتالوج المنتجات</h2>
-        
-        <div class="flex flex-wrap gap-2 mb-8 justify-center">
-            <button onclick="filterProducts('all')" class="bg-blue-900 text-white px-6 py-2 rounded-full font-bold">الكل</button>
-            <button onclick="filterProducts('apple')" class="bg-gray-200 hover:bg-blue-100 px-6 py-2 rounded-full font-bold">Apple</button>
-            <button onclick="filterProducts('samsung')" class="bg-gray-200 hover:bg-blue-100 px-6 py-2 rounded-full font-bold">Samsung</button>
-            <button onclick="filterProducts('huawei')" class="bg-gray-200 hover:bg-blue-100 px-6 py-2 rounded-full font-bold">Huawei</button>
-        </div>
-
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 text-right">
-            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100" data-category="apple">
-                <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">iPhone Screen</div>
-                <h3 class="font-black text-lg mb-1">شاشة iPhone 11 Pro</h3>
-                <p class="text-blue-600 font-bold mb-4">أوريجينال سحب</p>
-                <button onclick="addToCart('شاشة iPhone 11 Pro')" class="w-full bg-blue-900 text-white font-black py-2 rounded-xl hover:bg-blue-800 transition">أضف للسلة ➕</button>
-            </div>
-
-            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100" data-category="samsung">
-                <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">Samsung Screen</div>
-                <h3 class="font-black text-lg mb-1">شاشة Samsung A52</h3>
-                <p class="text-blue-600 font-bold mb-4">Super AMOLED</p>
-                <button onclick="addToCart('شاشة Samsung A52')" class="w-full bg-blue-900 text-white font-black py-2 rounded-xl hover:bg-blue-800 transition">أضف للسلة ➕</button>
-            </div>
-
-            <div class="product-card bg-white rounded-2xl shadow-md p-4 border border-gray-100" data-category="huawei">
-                <div class="bg-gray-100 h-32 rounded-xl mb-4 flex items-center justify-center font-bold text-gray-400">Huawei Screen</div>
-                <h3 class="font-black text-lg mb-1">شاشة Huawei P30 Lite</h3>
-                <p class="text-blue-600 font-bold mb-4">Original Quality</p>
-                <button onclick="addToCart('شاشة Huawei P30 Lite')" class="w-full bg-blue-900 text-white font-black py-2 rounded-xl hover:bg-blue-800 transition">أضف للسلة ➕</button>
+    <section class="hero-section text-white pt-16 pb-24 px-6">
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-black mb-4 leading-tight">الـجـدع</h1>
+            <p class="text-xl md:text-2xl text-blue-100 mb-8 font-medium">قطع غيار موبايل بضمان حقيقي يبدأ بعد التركيب [cite: 7, 8]</p>
+            
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://wa.me/201027120205" class="bg-green-500 p-4 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center gap-2 px-6">
+                    <span class="font-bold">واتساب</span>
+                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.556-5.332 11.891-11.891 11.891-2.01 0-3.987-.512-5.747-1.483l-6.247 1.691zm6.242-4.043l.348.207c1.42.844 3.05 1.29 4.726 1.29 5.234 0 9.491-4.257 9.491-9.491 0-2.541-.989-4.929-2.784-6.724s-4.183-2.784-6.724-2.784c-5.234 0-9.491 4.257-9.491 9.491 0 1.848.534 3.655 1.545 5.233l.228.355-1.002 3.66 3.742-1.011zm11.365-6.388c-.282-.141-1.666-.822-1.925-.917-.258-.094-.446-.141-.634.141-.188.282-.727.917-.892 1.104-.164.188-.329.212-.611.071-.282-.141-1.189-.438-2.265-1.399-.838-.747-1.402-1.67-1.566-1.953-.164-.282-.018-.434.123-.574.127-.127.282-.329.424-.494.141-.164.188-.282.282-.471.094-.188.047-.353-.024-.494-.071-.141-.634-1.528-.868-2.092-.228-.549-.46-.474-.634-.482-.164-.008-.353-.01-.541-.01s-.494.071-.753.353c-.258.282-.987.965-.987 2.352s1.011 2.728 1.152 2.917c.141.188 1.991 3.04 4.821 4.26.674.29 1.2.463 1.611.594.677.215 1.293.185 1.78.113.543-.081 1.666-.682 1.901-1.341.235-.659.235-1.223.164-1.341-.07-.118-.258-.188-.541-.329z"/></svg>
+                </a>
+                <a href="tel:01027120205" class="bg-blue-500 p-4 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center gap-2 px-6">
+                    <span class="font-bold">اتصال</span>
+                    <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M6.176 1.106l2.122 2.121a3 3 0 0 1 0 4.243l-1.357 1.357a16.05 16.05 0 0 0 6.311 6.312l1.357-1.358a3 3 0 0 1 4.243 0l2.121 2.122a3 3 0 0 1 0 4.243l-2.122 2.122c-2.307 2.307-6.113 2.502-8.775.467-3.69-2.82-6.521-5.651-9.34-9.34-2.035-2.662-1.84-6.468.467-8.775l2.122-2.122a3 3 0 0 1 4.243 0z"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <div id="cart-modal" class="fixed inset-0 bg-black/50 hidden z-[60] flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl p-6 text-right">
-            <h2 class="text-2xl font-black mb-4 border-b pb-2">سلة طلباتك 🛒</h2>
-            <ul id="cart-items" class="mb-6 max-h-60 overflow-y-auto space-y-2">
-                </ul>
-            <div class="flex gap-2">
-                <button onclick="sendOrder()" class="flex-1 bg-green-600 text-white py-3 rounded-xl font-black">إرسال الطلب واتساب ✅</button>
-                <button onclick="toggleCart()" class="bg-gray-200 px-6 py-3 rounded-xl font-bold">إغلاق</button>
+    <section class="container mx-auto px-6 -mt-12 mb-20">
+        <div class="glass-card p-8 rounded-[40px] shadow-2xl border border-gray-100">
+            <div class="flex flex-wrap gap-3 mb-10 justify-center">
+                <button onclick="filterItems('all')" class="px-8 py-3 rounded-2xl font-black bg-blue-900 text-white transition shadow-lg">الكل</button>
+                <button onclick="filterItems('apple')" class="px-8 py-3 rounded-2xl font-black bg-gray-100 hover:bg-blue-50 text-blue-900 transition">Apple</button>
+                <button onclick="filterItems('samsung')" class="px-8 py-3 rounded-2xl font-black bg-gray-100 hover:bg-blue-50 text-blue-900 transition">Samsung</button>
+                <button onclick="filterItems('huawei')" class="px-8 py-3 rounded-2xl font-black bg-gray-100 hover:bg-blue-50 text-blue-900 transition">Huawei</button>
+            </div>
+
+            <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="product-card glass-card p-6 border border-gray-100 text-center" data-cat="apple">
+                    <div class="bg-blue-50 h-40 rounded-[24px] mb-6 flex items-center justify-center text-3xl">📱</div>
+                    <h3 class="font-black text-xl mb-2 text-blue-900 leading-tight">شاشة iPhone 12 Pro</h3>
+                    <p class="text-blue-500 font-bold mb-6">أوريجينال سحب [cite: 11]</p>
+                    <button onclick="addToInvoice('شاشة iPhone 12 Pro')" class="btn-grad w-full py-4 rounded-2xl text-white font-black shadow-lg">أضف للفاتورة ➕</button>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <div id="invoice-modal" class="fixed inset-0 bg-blue-900/40 hidden z-[70] flex items-center justify-center p-6 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg rounded-[40px] p-10 text-right shadow-2xl border border-blue-50">
+            <h2 class="text-3xl font-black mb-6 text-blue-900">فاتورة الطلبات 📝</h2>
+            <div id="invoice-list" class="space-y-3 mb-8 max-h-64 overflow-y-auto pr-2">
+                </div>
+            <div class="flex gap-4">
+                <button onclick="submitInvoice()" class="flex-[2] bg-green-500 text-white py-5 rounded-2xl font-black text-lg shadow-xl hover:bg-green-600 transition">تأكيد وإرسال للجدع ✅</button>
+                <button onclick="toggleCart()" class="flex-1 bg-gray-100 text-gray-500 py-5 rounded-2xl font-black">إغلاق</button>
             </div>
         </div>
     </div>
 
-    <footer class="bg-blue-900 text-white py-8 text-center mt-20">
-        <p class="font-black text-xl mb-2 italic">AL JADAA - الجدع</p>
-        <p class="text-sm opacity-70 italic font-bold">سوهاج - شارع المحطة | 2026</p>
+    <footer class="bg-blue-900 text-white py-12 text-center">
+        <p class="text-2xl font-black mb-2 italic">AL JADAA</p>
+        <p class="opacity-60">سوهاج - شارع المحطة | جودة ومصداقية</p>
     </footer>
 
     <script>
-        let cart = [];
+        let invoice = [];
 
-        function addToCart(name) {
-            cart.push(name);
-            updateCartUI();
-            alert("تمت إضافة " + name + " للسلة");
+        function addToInvoice(item) {
+            invoice.push(item);
+            updateUI();
+            // تلميح بصري بسيط
+            const btn = event.currentTarget;
+            btn.innerText = "تمت الإضافة ✅";
+            setTimeout(() => btn.innerText = "أضف للفاتورة ➕", 1000);
         }
 
-        function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const list = document.getElementById('cart-items');
-            list.innerHTML = '';
-            cart.forEach((item, index) => {
-                list.innerHTML += `<li class="flex justify-between items-center bg-gray-50 p-2 rounded-lg border">
-                    <button onclick="removeFromCart(${index})" class="text-red-500 font-bold px-2 text-xl">×</button>
-                    <span>${item}</span>
-                </li>`;
-            });
+        function updateUI() {
+            document.getElementById('cart-count').innerText = invoice.length;
+            const list = document.getElementById('invoice-list');
+            list.innerHTML = invoice.map((it, idx) => `
+                <div class="flex justify-between items-center bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
+                    <button onclick="removeItem(${idx})" class="text-red-500 text-2xl font-black">×</button>
+                    <span class="font-bold text-blue-900 italic font-bold">${it}</span>
+                </div>
+            `).join('');
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
+        function removeItem(idx) {
+            invoice.splice(idx, 1);
+            updateUI();
         }
 
         function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
+            document.getElementById('invoice-modal').classList.toggle('hidden');
         }
 
-        function sendOrder() {
-            if (cart.length === 0) return alert("السلة فاضية يا جدع!");
-            const phoneNumber = "201027120205";
-            const message = "يا جدع، دي قائمة الطلبات بتاعتي من الموقع:\n\n" + cart.join('\n') + "\n\nأنا فني صيانة ومحتاج الأسعار وموعد الشحن.";
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        function submitInvoice() {
+            if (invoice.length === 0) return alert("الفاتورة لسه فاضية!");
+            const phone = "201027120205"; [cite: 18, 19]
+            const text = "فاتورة طلبات جديدة من AL JADAA:\n\n" + invoice.map((it, i) => `${i+1}- ${it}`).join('\n') + "\n\nيا جدع محتاج أعرف الأسعار والتوفر لشحن سوهاج.";
+            window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`; [cite: 19, 20]
         }
 
-        function filterProducts(category) {
-            const cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+        function filterItems(cat) {
+            document.querySelectorAll('.product-card').forEach(el => {
+                el.style.display = (cat === 'all' || el.dataset.cat === cat) ? 'block' : 'none';
             });
         }
     </script>
